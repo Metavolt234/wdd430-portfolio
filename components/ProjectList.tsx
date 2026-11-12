@@ -1,22 +1,22 @@
 import ProjectCard, { type ProjectCardProps } from "./ProjectCard";
-
-export interface Project {
-  title: string;
-  description: string;
-  technologies: string[];
-  link?: string;
-}
+import type { Project } from "@/lib/projects-db";
 
 interface ProjectListProps {
-  projects: ProjectCardProps[];
+  projects: Project[];
 }
 
 export default function ProjectList({ projects }: ProjectListProps) {
   return (
     <section className="grid gap-6 md:grid-cols-2">
-      {projects.map((project) => (
-        <ProjectCard key={project.title} {...project} />
-      ))}
+      {projects.map(({ id, title, description, technologies, link }) => {
+        const card: ProjectCardProps = {
+          title,
+          description,
+          technologies,
+          link: link ?? undefined,
+        };
+        return <ProjectCard key={id} {...card} />;
+      })}
     </section>
   );
 }

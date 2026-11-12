@@ -1,21 +1,11 @@
+import { Suspense } from "react";
 import ProjectList from "@/components/ProjectList";
+import { getProjects } from "@/lib/projects-db";
 
-const projects = [
-  {
-    title: "WDD430 Portfolio",
-    description:
-      "A responsive portfolio application built with Next.js and Tailwind CSS to showcase projects, skills, and professional experience.",
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    link: "https://metavolt234.github.io/wdd330/Class-Project/index.html",
-  },
-  {
-    title: "Next.js Learning Lab",
-    description:
-      "A project focused on learning modern frontend practices, component reusability, and production-ready UI architecture.",
-    technologies: ["Next.js", "JavaScript", "CSS Modules", "Responsive Design"],
-    link: "https://metavolt234.github.io/metavolt-tech/Uzuri%20site/index.html",
-  },
-];
+async function DatabaseProjects() {
+  const projects = await getProjects();
+  return <ProjectList projects={projects} />;
+}
 
 export default function Home() {
   return (
@@ -33,7 +23,9 @@ export default function Home() {
 
       <section className="mb-8">
         <h2 className="mb-6 text-3xl font-bold text-slate-900">Featured Projects</h2>
-        <ProjectList projects={projects} />
+        <Suspense fallback={<p>Loading projects...</p>}>
+          <DatabaseProjects />
+        </Suspense>
       </section>
     </main>
   );
