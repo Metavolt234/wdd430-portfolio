@@ -20,6 +20,11 @@ export default function Header() {
             </Link>
           </li>
           <li>
+            <Link href="/projects" className="transition hover:text-white">
+              Projects
+            </Link>
+          </li>
+          <li>
             <Link href="/open-source" className="transition hover:text-white">
               Open Source
             </Link>
