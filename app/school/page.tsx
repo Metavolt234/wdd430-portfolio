@@ -1,17 +1,9 @@
 import { Suspense } from "react";
-import { connection } from "next/server";
 import ProjectList from "@/components/ProjectList";
 import ProjectSkeleton from "@/components/ProjectSkeleton";
 import { getProjects } from "@/lib/projects-db";
 
 async function SchoolProjectList() {
-  await connection();
-
-  if (process.env.NODE_ENV === "development") {
-    // Temporary delay to verify component-level streaming.
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-  }
-
   const projects = await getProjects("school");
   return <ProjectList projects={projects} />;
 }
