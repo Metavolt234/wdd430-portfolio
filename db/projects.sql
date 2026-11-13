@@ -17,6 +17,15 @@ VALUES
     ARRAY['HTML', 'CSS', 'JavaScript'],
     'https://github.com/MetaVolt234'
 ),
+
+(
+    'Refresh test project',
+    'Checking request-time project data.',
+    'school',
+    ARRAY['Next.js'],
+    NULL
+),
+
 (
     'Student Management System',
     'A system for managing student records and academic information.',
