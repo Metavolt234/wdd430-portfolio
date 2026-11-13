@@ -19,6 +19,11 @@ export default function Header() {
               About
             </Link>
           </li>
+          <li>
+            <Link href="/open-source" className="transition hover:text-white">
+              Open Source
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
